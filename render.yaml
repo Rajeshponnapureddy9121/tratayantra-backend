@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: tratayantra-backend
+    env: python
+    region: oregon
+    branch: main
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn backend.wsgi"
+    preDeployCommand: "python manage.py migrate && python manage.py collectstatic --noinput"
